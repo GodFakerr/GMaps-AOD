@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">NaviAOD</string>
+    <string name="notification_service_label">NaviAOD Maps Interceptor</string>
+    <string name="aod_title">Always-On Navigation</string>
+    
+    <!-- Status Strings -->
+    <string name="status_listening">Listening for Google Maps navigation…</string>
+    <string name="status_active">Active navigation detected</string>
+    <string name="status_idle">Ready. Start navigation in Google Maps</string>
+    <string name="status_simulating">Simulating navigation (Pune Route)</string>
+    
+    <!-- Permissions -->
+    <string name="perm_notification_title">Notification Access</string>
+    <string name="perm_notification_desc">Required to read turn-by-turn directions from Google Maps</string>
+    <string name="perm_overlay_title">Display Over Other Apps</string>
+    <string name="perm_overlay_desc">Allows AOD HUD to launch automatically over the lock screen</string>
+    <string name="perm_battery_title">Battery Optimization Exemption</string>
+    <string name="perm_battery_desc">Prevents Android from killing the AOD HUD during long trips</string>
+    <string name="perm_location_title">Location / Speedometer</string>
+    <string name="perm_location_desc">Used for passive GPS speedometer without draining extra battery</string>
+    <string name="btn_grant">Grant</string>
+    <string name="btn_granted">Enabled</string>
+    
+    <!-- Battery Saver Profiles -->
+    <string name="profile_extreme">Extreme AMOLED Saver</string>
+    <string name="profile_extreme_desc">Blanks screen on long straight stretches (Wake-on-Approach). 1 FPS rendering, ultra-dim night brightness, zero animations.</string>
+    <string name="profile_balanced">Balanced OLED HUD</string>
+    <string name="profile_balanced_desc">Continuous high-contrast arrow, burn-in pixel shift, passive speedometer, tap to peek map.</string>
+    <string name="profile_custom">Custom</string>
+    <string name="profile_custom_desc">Full manual control over every battery reduction parameter.</string>
+    
+    <!-- Features & Settings -->
+    <string name="setting_wake_on_turn">Wake-on-Approach (Highway Sleep)</string>
+    <string name="setting_wake_on_turn_desc">Completely turns off display on long stretches and wakes up before next turn</string>
+    <string name="setting_wake_threshold">Wake-up distance threshold: %1$d m</string>
+    
+    <string name="setting_pocket_detection">Pocket &amp; Face-Down Sleep</string>
+    <string name="setting_pocket_detection_desc">Uses proximity sensor to turn screen off when in pocket or face down</string>
+    
+    <string name="setting_burn_in_protection">pOLED Burn-In Protection (Pixel Shift)</string>
+    <string name="setting_burn_in_protection_desc">Subtly drifts HUD elements every 60s to protect Moto Edge 50 Fusion pOLED panel</string>
+    
+    <string name="setting_fps_throttling">1 FPS GPU Throttling</string>
+    <string name="setting_fps_throttling_desc">Restricts screen redraws to 1 frame per second to keep CPU/GPU in low-power states</string>
+    
+    <string name="setting_software_dimmer">Ultra-Dim Night Filter</string>
+    <string name="setting_software_dimmer_desc">Lowers perceived brightness below hardware minimum for pitch-black night drives</string>
+    
+    <string name="setting_map_peek">Map Peek Mode</string>
+    <string name="setting_map_peek_desc">Single tap shows a minimalist monochrome route preview for 8s</string>
+    
+    <string name="setting_auto_launch">Auto-Launch on Navigation</string>
+    <string name="setting_auto_launch_desc">Automatically launch AOD when Google Maps starts navigating</string>
+
+    <string name="setting_accent_color">OLED Accent Color</string>
+    
+    <!-- Simulator & Actions -->
+    <string name="btn_test_aod">Test AOD HUD Now</string>
+    <string name="btn_start_simulation">Start Pune Route Simulator</string>
+    <string name="btn_stop_simulation">Stop Simulator</string>
+    <string name="hint_double_tap">Double-tap screen anytime to jump to Google Maps</string>
+</resources>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootAodLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/oled_black"
+    android:keepScreenOn="true">
+
+    <!-- Pixel-Shift Container for Burn-In Protection (moves by +/- 2 to 4px) -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/shiftContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/oled_black"
+        android:padding="20dp">
+
+        <!-- Top Bar: Clock, Speedometer, Battery Indicator -->
+        <TextView
+            android:id="@+id/tvAodClock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/oled_gray_dim"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="14:52" />
+
+        <LinearLayout
+            android:id="@+id/layoutSpeedometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/layoutBattery"
+            app:layout_constraintStart_toEndOf="@+id/tvAodClock"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginEnd="4dp"
+                android:src="@drawable/ic_speedometer"
+                app:tint="@color/oled_gray_dim" />
+
+            <TextView
+                android:id="@+id/tvSpeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/oled_gray_medium"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium"
+                tools:text="48 km/h" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutBattery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvBatteryPercent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:textColor="@color/oled_gray_dim"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium"
+                tools:text="85%" />
+
+            <ImageView
+                android:id="@+id/ivBattery"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_battery"
+                app:tint="@color/oled_gray_dim" />
+        </LinearLayout>
+
+        <!-- Center Region: Next Maneuver Arrow & Big Distance -->
+        <ImageView
+            android:id="@+id/ivManeuverArrow"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="50dp"
+            android:contentDescription="Maneuver Arrow"
+            android:src="@drawable/ic_arrow_straight"
+            app:layout_constraintBottom_toTopOf="@+id/tvManeuverDistance"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutSpeedometer"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:tint="@color/oled_white" />
+
+        <TextView
+            android:id="@+id/tvManeuverDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-black"
+            android:textColor="@color/oled_white"
+            android:textSize="54sp"
+            app:layout_constraintBottom_toTopOf="@+id/tvInstruction"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivManeuverArrow"
+            tools:text="350 m" />
+
+        <TextView
+            android:id="@+id/tvInstruction"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="24dp"
+            android:gravity="center"
+            android:textColor="@color/oled_gray_light"
+            android:textSize="22sp"
+            android:fontFamily="sans-serif-medium"
+            android:maxLines="3"
+            android:ellipsize="end"
+            app:layout_constraintBottom_toTopOf="@+id/bottomCard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvManeuverDistance"
+            tools:text="Turn right onto Senapati Bapat Road" />
+
+        <!-- Bottom Trip Stats: Remaining Distance, Time, ETA -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottomCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:background="@color/oled_black"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/tvDoubleTapHint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/tvRemainingDistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/oled_white"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif-bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="14 km" />
+
+            <TextView
+                android:id="@+id/tvEta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/oled_gray_medium"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="28 min · 4:15 PM" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Glanceable Quick Hint for Gestures -->
+        <TextView
+            android:id="@+id/tvDoubleTapHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/hint_double_tap"
+            android:textColor="@color/oled_gray_dim"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Map Peek Mode View (Monochrome Vector Route Overlay) -->
+    <com.naviaod.app.ui.OledMapView
+        android:id="@+id/oledMapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <!-- Deep Blank Overlay: 100% pure black for Highway Sleep & Pocket Detection -->
+    <FrameLayout
+        android:id="@+id/deepBlankOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/oled_black"
+        android:visibility="gone">
+
+        <!-- Micro Sleep Clock (Optional ultra-dim 1% single pixel pulse) -->
+        <TextView
+            android:id="@+id/tvSleepClock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="#222222"
+            android:textSize="12sp"
+            tools:text="14:55 · Sleep Mode" />
+    </FrameLayout>
+
+    <!-- Software Dimmer Overlay for below-hardware minimum brightness at night -->
+    <View
+        android:id="@+id/softwareDimmerOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/oled_black"
+        android:alpha="0.0"
+        android:clickable="false"
+        android:focusable="false" />
+
+</FrameLayout>
